@@ -1,43 +1,23 @@
 #include <iostream>
-#include <string>   //string객체 사용
-#include <fstream>  //ifstream ofstream
-#include <iomanip>  // setw
+#include <iomanip>
 using namespace std;
 
 int main() {
-    ofstream fout;
-    fout.open("example.txt");
+    double d1 = 1.23456789;
+    cout << d1 << endl;
 
-    string s2 = "Objective Oriented Programming";
-    fout << s2 << endl;
-    fout << "Random Variables" << endl;
-    fout << "Linear Algebra" << endl;
-    fout.close();
+    cout.width(10);
+    cout.precision(3);
+    cout << d1 << endl;
 
-    ifstream fin;
-    string s1;
-    fin.open("example.txt");
-    if(!fin) {
-        cout << "Error, no such file exists" << endl;
-        exit(100);
-    }
-    while(getline(fin, s1)) {
-        cout << s1 << endl;
-    }
-    fin.close();
-    // getline()에 의한 내부 읽기 포인터를 초기화시키기 위해서
-    // file input stream을 다시 연결해서 사용함.
-    fin.open("example.txt");
-    // while(getline(fin, s1, ' ')) {
-    //     cout << s1 << endl;
-    // }
-    while(1) {
-        fin >> s1;
-        if(fin.eof()) break;
+    char ch1;
+    char ch2;
 
-        cout << s1 << endl;
-    }
-    fin.close();
-    
-    return 0;
+    cin >> ch1;
+    cout << "(" << ch1 << ")" << endl;
+    cin.ignore();
+
+    cin.unsetf(ios::skipws); // default 값인 white space 제외 기능을 해제.
+    cin >> ch2;
+    cout << "(" << ch2 << ")" << endl;
 }
