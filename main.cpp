@@ -1,23 +1,43 @@
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 using namespace std;
 
+bool getStu(ifstream& fin,
+    int& id, int& exam1, int& exam2, int& exam3) {
+    fin >> id >> exam1 >> exam2 >> exam3;
+    if(!fin) return false;
+    return true;
+}
+void calcAvgGrade(int& avg, int& exam1, int& exam2, int& exam3, char& grade) {
+    avg = (exam1 + exam2 + exam3) / 3;
+    if (avg >= 90)
+        grade = 'A';
+    else if (avg >= 80)
+        grade = 'B';
+    else
+        grade = 'F';
+}
+void writeStu(ofstream& fout,
+    int id, int avg, char grade) {
+    fout.fill('0');
+    fout << setw(4) << id;
+    fout.fill(' ');
+    fout << setw(4) << avg;
+    fout << setw(4) << grade << endl;
+}
 int main() {
-    double d1 = 1.23456789;
-    cout << d1 << endl;
+    ifstream fin("ch7STUFL.DAT");
+    ofstream fout("grade.txt");
+    int id, exam1, exam2, exam3, avg;
+    char grade;
 
-    cout.width(10);
-    cout.precision(3);
-    cout << d1 << endl;
-
-    char ch1;
-    char ch2;
-
-    cin >> ch1;
-    cout << "(" << ch1 << ")" << endl;
-    cin.ignore();
-
-    cin.unsetf(ios::skipws); // default 값인 white space 제외 기능을 해제.
-    cin >> ch2;
-    cout << "(" << ch2 << ")" << endl;
+    while(getStu(fin, id, exam1, exam2, exam3)) {
+        calcAvgGrade(avg, exam1, exam2, exam3, grade);
+        writeStu(fout, id, avg, grade);
+    }
+    fin.close();
+    fout.close();
+    cout << "end";
+    return 0;
 }
