@@ -5,27 +5,39 @@
 using namespace std;
 
 int main() {
-    string s1 = "mouse";
-    cout << s1 << endl;
-    cout << s1.length() << ", " << s1.size() << endl << endl;
-    cout << s1.empty() << endl;
-    s1.clear();
-    cout << s1.empty() << endl;
-    s1 = "Good";
-    s1 = s1 + "-bye";
+    ofstream fout;
+    fout.open("example.txt");
 
-    cout << s1 << endl;
-    cout << s1[4] << ", " << s1.at(4) << endl;
-    cout << (s1 == "Good-bye") << endl;
-    cout << (s1 == "good-bye") << endl;
-    cout << (s1 >= "z") << endl << endl;
+    string s2 = "Objective Oriented Programming";
+    fout << s2 << endl;
+    fout << "Random Variables" << endl;
+    fout << "Linear Algebra" << endl;
+    fout.close();
 
-    cout << s1.substr(5, 3) << endl;
-    cout << s1.substr(2, 2) << endl;
-    cout << s1.find("od") << endl;
+    ifstream fin;
+    string s1;
+    fin.open("example.txt");
+    if(!fin) {
+        cout << "Error, no such file exists" << endl;
+        exit(100);
+    }
+    while(getline(fin, s1)) {
+        cout << s1 << endl;
+    }
+    fin.close();
+    // getline()에 의한 내부 읽기 포인터를 초기화시키기 위해서
+    // file input stream을 다시 연결해서 사용함.
+    fin.open("example.txt");
+    // while(getline(fin, s1, ' ')) {
+    //     cout << s1 << endl;
+    // }
+    while(1) {
+        fin >> s1;
+        if(fin.eof()) break;
 
-    int od_index = s1.find("od");
-    cout << s1.find("od", od_index + 2);
-    cout << (s1.find("korea") == string::npos) << endl;
+        cout << s1 << endl;
+    }
+    fin.close();
+    
     return 0;
 }
