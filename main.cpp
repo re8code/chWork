@@ -1,43 +1,22 @@
 #include <iostream>
-#include <fstream>
-#include <iomanip>
 using namespace std;
 
-bool getStu(ifstream& fin,
-    int& id, int& exam1, int& exam2, int& exam3) {
-    fin >> id >> exam1 >> exam2 >> exam3;
-    if(!fin) return false;
-    return true;
-}
-void calcAvgGrade(int& avg, int& exam1, int& exam2, int& exam3, char& grade) {
-    avg = (exam1 + exam2 + exam3) / 3;
-    if (avg >= 90)
-        grade = 'A';
-    else if (avg >= 80)
-        grade = 'B';
-    else
-        grade = 'F';
-}
-void writeStu(ofstream& fout,
-    int id, int avg, char grade) {
-    fout.fill('0');
-    fout << setw(4) << id;
-    fout.fill(' ');
-    fout << setw(4) << avg;
-    fout << setw(4) << grade << endl;
-}
 int main() {
-    ifstream fin("ch7STUFL.DAT");
-    ofstream fout("grade.txt");
-    int id, exam1, exam2, exam3, avg;
-    char grade;
+    string data = "사랑,프로그래밍,의자,사랑의바보,영통역,천년의사랑,냉장고,객체지향";
+    string search;
+    string res = "";
 
-    while(getStu(fin, id, exam1, exam2, exam3)) {
-        calcAvgGrade(avg, exam1, exam2, exam3, grade);
-        writeStu(fout, id, avg, grade);
+    cout << "키워드 : "; cin >> search;
+
+    int start=0, end=0, pos=0;
+    while(pos != data.length()) {
+        pos = data.find(',', start);
+        if(pos==string::npos) pos=data.length();
+
+        string word = data.substr(start, pos-start);
+        if(word.find(search) != string::npos)
+            res += (res=="" ? "" : ",") + word;
+        start = pos+1;
     }
-    fin.close();
-    fout.close();
-    cout << "end";
-    return 0;
+    cout <<  "검색결과 : " <<  res << endl;
 }
