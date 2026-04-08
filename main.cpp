@@ -3,23 +3,28 @@
 using namespace std;
 
 int main() {
-    ofstream fout("merge.txt");
-
-    ifstream fin;
-    fin.open("text1.txt");
+    ifstream fin("text5.txt");
 
     string line;
-    while(getline(fin, line)) {
-        fout << line << endl;
-    }
-    fin.close();
-    fout << endl;
+    char res[1000] = {};
+    int offset=0;
 
-    fin.open("text2.txt");
     while(getline(fin, line)) {
-        fout << line << endl;
+        strcpy(res+offset, line.c_str());
+        res[offset+line.length()] = ' ';
+        offset += line.length()+1;
     }
     fin.close();
+
+    int len;
+    cout << "length = "; cin >> len;
+
+    ofstream fout("output.txt");
+    string result = string(res);
+    for(int i=0; i<result.length(); i++) {
+        fout << result[i];
+        if(i%len==len-1) fout << endl;
+    }
     fout.close();
 
     return 0;
