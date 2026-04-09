@@ -1,3 +1,0 @@
-Objective Oriented Programming
-Random Variables
-Linear Algebra
