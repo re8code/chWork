@@ -18,24 +18,34 @@ void swapRows(double** matrix, int row1, int row2) {
     matrix[row2] = temp;
 }
 void performGaussianElimination(double** matrix, int n) {
-/*  Gauss-Jordan Elimination
-    if(matrix[0][0] == 0) swapRows(matrix, 0, 1);
+/*
+    bool isRowExchange = false;
+    if(matrix[0][0] == 0) isRowExchange = true;
 
-    for(int r=0; r<3; r++) {
-        // elementary row
-        double v = matrix[r][r];
-        for(int c=0; c<n+1; c++) matrix[r][c] /= v;
-
-        // elimination
-        for(int _r=0; _r<n; _r++) {
-            if(_r == r) continue;
-
-            v = matrix[_r][r]*(-1);
-            for(int c=0; c<n+1; c++) matrix[_r][c] += v*matrix[r][c];
+    for(int i=0; i<n; i++) {
+        if(isRowExchange == true) {
+            // Partial Pivoting: 현재 열에서 절대값이 가장 큰 행을 찾음
+            int maxRow = i;
+            for(int k=i+1; k<n; k++) {
+                if(std::abs(matrix[k][i]) > std::abs(matrix[maxRow][i])) {
+                    maxRow = k;
+                }
+            }
+            // 항상 가장 큰 피벗을 가진 행과 교환합니다.
+            if(maxRow != i) {
+                swapRows(matrix, i, maxRow);
+            }
+        }
+        // forward elimination 수행
+        for(int k=i+1; k<n; k++) {
+            double factor = matrix[k][i] / matrix[i][i];
+            for(int j=i; j<n+1; j++) {
+                matrix[k][j] -= factor * matrix[i][j];
+            }
         }
     }
 // */
-// /*
+// /* 
     for(int i=0; i<n; i++) {
         // Partial Pivoting: 현재 열에서 절대값이 가장 큰 행을 찾음
         int maxRow = i;
@@ -48,6 +58,7 @@ void performGaussianElimination(double** matrix, int n) {
         if(maxRow != i) {
             swapRows(matrix, i, maxRow);
         }
+
         // forward elimination 수행
         for(int k=i+1; k<n; k++) {
             double factor = matrix[k][i] / matrix[i][i];
