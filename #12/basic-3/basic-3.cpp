@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Text.h"
 #include "FancyText.h"
 #include "FixedText.h"
 using namespace std;

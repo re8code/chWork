@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Text.h"
 
 class FancyText : public Text {
