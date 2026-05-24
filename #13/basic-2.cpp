@@ -22,11 +22,14 @@ void Point<T>::setXY(T _x, T _y) {
     x = _x;
     y = _y;
 }
-template<class T>
+
+template<class T> // ================================================ 구현
 T Point<T>::getX() {return x;}
-template<class T>
+
+template<class T> // ================================================ 구현
 T Point<T>::getY() {return y;}
-template<class T>
+
+template<class T> // ================================================ 구현
 void Point<T>::print() {
     cout << x << ", " << y << endl;
 }

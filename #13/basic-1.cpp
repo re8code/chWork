@@ -2,11 +2,11 @@
 #include <vector>
 using namespace std;
 
-template<typename T1, typename T2>
-bool less_than(T1 a, T2 b) {return a<b;}
+template<typename T1, typename T2> // =============================== 구현
+bool less_than(T1 a, T2 b) {return a<b;} // ========================= 구현
 
 template<class T>
-T sum(const vector<T>& v) {
+T sum(const vector<T>& v) { // ====================================== 구현
     T sum = 0;
     for(T e : v) sum += e;
     return sum;
