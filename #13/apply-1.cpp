@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm> // sort
+#define ERROR -1
 using namespace std;
 
 template <typename T>
@@ -26,7 +28,58 @@ template<typename T>
 CList<T>::~CList() {}
 
 template<typename T>
-void CList<T>::Add(T data) {m_Array[m_Length++] = data;}
+bool CList<T>::IsEmpty() {return m_Length==0;}
+
+template<typename T>
+bool CList<T>::IsFull() {return m_Length==5;}
+
+template<typename T>
+void CList<T>::Add(T data) {
+    if(IsFull()) {
+        cout << "\tList is full." << endl;
+        return;
+    }
+    for(int i=0; i<m_Length; i++) {
+        if(m_Array[i] == data) {
+            cout << "\t중복된 데이터가 존재합니다." << endl;
+            return;
+        }
+    }
+    // data add
+    m_Array[m_Length++] = data;
+    // sorting
+    sort(m_Array, m_Array+m_Length);
+}
+
+template<typename T>
+void CList<T>::Delete(T data) {
+    if(IsEmpty()) {
+        cout << "\tList is empty." << endl;
+        return;
+    }
+    // find
+    int index=ERROR;
+    for(int i=0; i<m_Length; i++) {
+        if(m_Array[i] == data) {index=i; break;}
+    }
+    if(index == ERROR) return;
+    // delete
+    for(int i=index; i<m_Length-1; i++)
+        m_Array[i] = m_Array[i+1];
+    m_Length--;
+}
+
+template<typename T>
+void CList<T>::Print() {
+    if(IsEmpty()) {
+        cout << "\tList is empty." << endl;
+        return;
+    }
+    cout << "\t Current List " << endl;
+    cout << "\t";
+    for(int i=0; i<m_Length; i++) cout << m_Array[i] << " ";
+    cout << endl;
+}
 
 int command() {
     int num;
