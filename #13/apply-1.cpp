@@ -75,7 +75,7 @@ void CList<T>::Print() {
         cout << "\tList is empty." << endl;
         return;
     }
-    cout << "\t Current List " << endl;
+    cout << "\n\t>> Current List " << endl;
     cout << "\t";
     for(int i=0; i<m_Length; i++) cout << m_Array[i] << " ";
     cout << endl;
