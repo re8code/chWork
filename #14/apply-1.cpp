@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
 
     vector<int> list;
 

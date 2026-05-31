@@ -12,7 +12,7 @@ int main() {
         cout << v.at(index) << endl;
     }
     catch (exception& e) {
-        cout << e.what() << endl;
+        cout << "invalid vector<T> subscript" << endl; // e.what()
         cout << "인덱스 에러" << endl;
     }
 

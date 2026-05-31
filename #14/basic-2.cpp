@@ -34,7 +34,7 @@ vector<int> load_vector(string filename) {
 int main() {
     try {
         vector<int> v = load_vector("values.dat");  // 구현 3
-        for (int elem : v)
+        for(int elem : v)
             cout << elem << ' ';
         cout << endl;
     }
