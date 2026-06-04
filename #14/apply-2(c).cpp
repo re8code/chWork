@@ -68,7 +68,7 @@ int main() {
         for(CStudent value : numbers)
             value.Display();
     }
-    catch (std::exception& e) {
+    catch (exception& e) {
         cout << e.what() << '\n';
     }
 
