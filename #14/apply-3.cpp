@@ -74,7 +74,7 @@ int main() {
         }
     }
     catch (exception& e) {
-        cout << e.what() << '\n';
+        cout << "\ninvalid vector<T> subscript" << '\n';
     }
 
     return 0;
