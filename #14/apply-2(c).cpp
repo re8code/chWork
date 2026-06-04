@@ -36,7 +36,7 @@ public:
 
 vector<CStudent> read_file(string& filename) {
     ifstream ifs(filename);
-    if (!ifs.is_open()) {
+    if(!ifs.is_open()) {
         throw FileNotFoundException(filename);
     }
 
@@ -44,7 +44,7 @@ vector<CStudent> read_file(string& filename) {
     ifs >> count;
 
     vector<CStudent> students;
-    for (int i = 0; i < count; i++) {
+    for(int i=0; i<count; i++) {
         string name, major;
         int number;
         ifs >> name >> number >> major;
@@ -65,7 +65,7 @@ int main() {
 
     try {
         vector<CStudent> numbers = read_file(str);
-        for (CStudent value : numbers)
+        for(CStudent value : numbers)
             value.Display();
     }
     catch (std::exception& e) {
