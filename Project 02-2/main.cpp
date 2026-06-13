@@ -7,7 +7,7 @@ int main() {
     // 여행 유형 선택
     int type=1;
     while (type >= 1 && type <= 3) {
-        cout << "여행 유형을 입력해주세요(1, 2, 3): ";
+        cout << "Enter the type of vacation (1, 2, 3): "; // 실행 화면 내용으로 변경
         cin >> type;
 
         // 여행 계획 확인

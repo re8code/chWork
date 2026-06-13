@@ -3,41 +3,41 @@
 
 #include "vacation.h"
 
-// Package1: 호텔과 항공권만 예약
+// Package1: Hotel과 Flight만 예약
 class Package1 : public Vacation {
 public:
     void bookHotels() override {
-        std::cout << "Hotels are booked." << std::endl;
+        cout << "Hotels are booked." << endl;
     }
     void bookFlights() override {
-        std::cout << "Flights are booked." << std::endl;
+        cout << "Flights are booked." << endl;
     }
-    // bookTours는 빈 구현을 상속받으므로 선언하지 않아도 됨
+    // bookTours는 가상 함수 그대로.
 };
 
-// Package2: 호텔과 투어만 예약
+// Package2: Hotel과 Tour만 예약
 class Package2 : public Vacation {
 public:
     void bookHotels() override {
-        std::cout << "Hotels are booked." << std::endl;
+        cout << "Hotels are booked." << endl;
     }
     void bookTours() override {
-        std::cout << "Tours are booked." << std::endl;
+        cout << "Tours are booked." << endl;
     }
-    // bookFlights는 빈 구현을 상속받으므로 선언하지 않아도 됨
+    // bookFlights는 가상 함수 그대로.
 };
 
-// Package3: 호텔, 항공권, 투어 모두 예약
+// Package3: Hotel, Flight, Tour 모두 예약
 class Package3 : public Vacation {
 public:
     void bookHotels() override {
-        std::cout << "Hotels are booked." << std::endl;
+        cout << "Hotels are booked." << endl;
     }
     void bookFlights() override {
-        std::cout << "Flights are booked." << std::endl;
+        cout << "Flights are booked." << endl;
     }
     void bookTours() override {
-        std::cout << "Tours are booked." << std::endl;
+        cout << "Tours are booked." << endl;
     }
 };
 
