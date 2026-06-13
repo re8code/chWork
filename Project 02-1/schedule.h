@@ -6,13 +6,13 @@ using namespace std;
 
 class Schedule {
 private:
-    string courses[10]; // 한 학생의 최대 수강 가능 과목수: 10 [cite: 61]
+    string courses[10]; // 한 학생의 최대 수강 가능 과목수를 10
     int numCourses;
 
 public:
     Schedule();
-    void addCourse(const string& courseName);
-    void print() const;
+    void addCourse(string);
+    void print();
 };
 
 #endif

@@ -6,13 +6,13 @@ using namespace std;
 
 class Roster {
 private:
-    string students[300]; // 강좌당 최대 수강 가능 인원수: 300명 [cite: 61]
+    string students[300]; // 강좌당 최대 수강 가능 인원수를 300명
     int numStudents;
 
 public:
     Roster();
-    void addStudent(const std::string& studentName);
-    void print() const;
+    void addStudent(string);
+    void print();
 };
 
 #endif
